@@ -1,0 +1,32 @@
+package com.doldole.sideproject4timeAttendanceManagement.domain;
+
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class Dept extends BaseEntity {
+
+    @Id @GeneratedValue
+    @Column(name = "DEPT_ID")
+    private Long id;
+
+    @Column(name = "DEPT_NAME")
+    private String name;
+
+    private int deptLvl;
+
+    private Long parId;
+
+    public Dept(String name) {
+        this.name = name;
+    }
+}
