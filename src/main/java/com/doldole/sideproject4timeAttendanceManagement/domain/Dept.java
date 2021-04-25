@@ -1,9 +1,6 @@
 package com.doldole.sideproject4timeAttendanceManagement.domain;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +9,7 @@ import javax.persistence.Id;
 
 @Entity
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 public class Dept extends BaseEntity {
 
     @Id @GeneratedValue
@@ -26,7 +23,9 @@ public class Dept extends BaseEntity {
 
     private Long parId;
 
-    public Dept(String name) {
+    public Dept(String name, int deptLvl, Long parId) {
         this.name = name;
+        this.deptLvl = deptLvl;
+        this.parId = parId;
     }
 }
