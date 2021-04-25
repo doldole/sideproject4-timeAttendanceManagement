@@ -13,22 +13,4 @@ import javax.persistence.EntityManager;
 @SpringBootTest
 class Sideproject4TimeAttendanceManagementApplicationTests {
 
-	@Autowired
-	EntityManager em;
-
-	@Autowired
-	private MemberRepository memberRepository;
-
-	@Autowired
-	private DeptRepository deptRepository;
-
-	@Test
-	public void test() {
-		Dept dept = new Dept("test");
-		deptRepository.save(dept);
-
-		Member member = new Member("member1", "AA", dept);
-		memberRepository.save(member);
-	}
-
 }
