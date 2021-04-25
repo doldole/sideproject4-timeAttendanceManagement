@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form role="form" action="/dept/new" th:object="${deptForm}" method="post">
+    <div>
+        <label th:for="name">부서명</label>
+        <input type="text" th:field="*{name}">
+        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Incorrect date</p>
+    </div>
+    <div>
+        <label th:for="deptLvl">레벨</label>
+        <input type="text" th:field="*{deptLvl}">
+        <p th:if="${#fields.hasErrors('deptLvl')}" th:errors="*{deptLvl}">Incorrect date</p>
+    </div>
+    <div>
+        <label th:for="parId">상위부서</label>
+        <input type="text" th:field="*{parId}">
+        <p th:if="${#fields.hasErrors('parId')}" th:errors="*{parId}">Incorrect date</p>
+    </div>
+    <input type="submit" value="저장">
+</form>
+</body>
+</html>
