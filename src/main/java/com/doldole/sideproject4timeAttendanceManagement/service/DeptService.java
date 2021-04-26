@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -22,5 +24,13 @@ public class DeptService {
     public Long insertDept(Dept dept) {
         deptRepository.save(dept);
         return dept.getId();
+    }
+
+    public List<Dept> findAll() {
+        return deptRepository.findAll();
+    }
+
+    public Optional<Dept> findById(Long id) {
+        return deptRepository.findById(id);
     }
 }

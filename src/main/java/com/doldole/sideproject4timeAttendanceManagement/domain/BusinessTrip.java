@@ -24,6 +24,9 @@ public class BusinessTrip extends BaseEntity {
     private int useDe;
     private int useTime;
     private int useMnt;
+    private String dstnt;
+    private String bsnsPrps;
+    private String transportation;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MEMBER_ID")
