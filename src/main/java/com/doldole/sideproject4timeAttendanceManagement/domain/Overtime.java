@@ -26,4 +26,12 @@ public class Overtime extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
+
+    public Overtime(AttendStatus overtimeStatus, Period period, int reqstTime, int reqstMnt, Member member) {
+        this.overtimeStatus = overtimeStatus;
+        this.period = period;
+        this.reqstTime = reqstTime;
+        this.reqstMnt = reqstMnt;
+        this.member = member;
+    }
 }

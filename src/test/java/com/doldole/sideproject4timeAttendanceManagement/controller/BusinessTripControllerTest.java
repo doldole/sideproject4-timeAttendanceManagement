@@ -1,29 +1,24 @@
-package com.doldole.sideproject4timeAttendanceManagement.service;
+package com.doldole.sideproject4timeAttendanceManagement.controller;
 
 import com.doldole.sideproject4timeAttendanceManagement.domain.BusinessTrip;
 import com.doldole.sideproject4timeAttendanceManagement.domain.Dept;
 import com.doldole.sideproject4timeAttendanceManagement.domain.Member;
-import com.doldole.sideproject4timeAttendanceManagement.domain.Period;
 import com.doldole.sideproject4timeAttendanceManagement.form.BusinessTripForm;
-import org.assertj.core.api.Assertions;
+import com.doldole.sideproject4timeAttendanceManagement.service.BusinessTripService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import java.util.ArrayList;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@Transactional
-@Rollback(value = false)
-class BusinessTripServiceTest {
+class BusinessTripControllerTest {
 
     @Autowired
     BusinessTripService businessTripService;
