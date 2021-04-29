@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        function fnSelect(id, name) {
+            var result = [id, name];
+            console.log("result : " + result);
+            window.opener.fnDeptCallback(result);
+            window.close();
+        }
+
+    </script>
+</head>
+<body>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>부서명</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="dept : ${deptList}">
+            <td th:text="${dept.id}"></td>
+            <td th:text="${dept.name}" th:ondblclick="javascript:fnSelect([[${dept.id}]], [[${dept.name}]]);"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

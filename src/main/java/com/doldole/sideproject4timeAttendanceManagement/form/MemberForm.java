@@ -10,4 +10,5 @@ public class MemberForm {
     private String name;
     private String rank;
     private Long deptId;
+    private String deptName;
 }

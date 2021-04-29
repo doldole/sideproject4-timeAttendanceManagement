@@ -3,6 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script>
+        function fnDept() {
+            window.open('/cmmn/deptPopupList', '부서팝업', 'width=720, height=500, menubar=no, status=no, toolbar=no');
+        }
+
+        function fnDeptCallback(result) {
+            document.getElementById('deptId').value = result[0];
+            document.getElementById('deptName').value = result[1];
+        }
+
+    </script>
 </head>
 <body>
 <form role="form" action="/member/new" th:object="${memberForm}" method="post">
@@ -18,11 +29,9 @@
     </div>
     <div>
         <label th:for="dept">부서</label>
-        <select name="deptId" id="dept">
-            <option th:each="dept : ${depts}"
-                    th:value="${dept.id}"
-                    th:text="${dept.name}" />
-        </select>
+        <input type="text" th:field="*{deptName}" readonly/>
+        <input type="hidden" th:field="*{deptId}">
+        <a href="#" onclick="fnDept();">부서선택</a>
     </div>
     <input type="submit" value="저장">
 </form>
