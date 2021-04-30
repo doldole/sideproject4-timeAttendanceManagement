@@ -1,6 +1,7 @@
 package com.doldole.sideproject4timeAttendanceManagement;
 
 import com.doldole.sideproject4timeAttendanceManagement.domain.Dept;
+import com.doldole.sideproject4timeAttendanceManagement.domain.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,6 +32,18 @@ public class InitDb {
             Dept dept2 = new Dept("인사총무팀", 2, 1L);
             em.persist(dept);
             em.persist(dept2);
+
+            Member member1 = new Member("testA", "사원", dept);
+            Member member2 = new Member("testB", "과장", dept2);
+            Member member3 = new Member("testC", "대리", dept);
+            Member member4 = new Member("testD", "차장", dept2);
+            Member member5 = new Member("testE", "부장", dept);
+
+            em.persist(member1);
+            em.persist(member2);
+            em.persist(member3);
+            em.persist(member4);
+            em.persist(member5);
         }
 
     }

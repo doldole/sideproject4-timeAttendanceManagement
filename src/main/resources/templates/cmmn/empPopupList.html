@@ -1,10 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <style>
+        .dept_area {
+            float: left;
+        }
+
+    </style>
+    <script>
+        function fnSelect(id, name) {
+            console.log('test');
+            $.ajax({
+                url: "/cmmn/selectDeptEmpList",
+                type: "get",
+                dataType: "json",
+                data: {deptId:id},
+                success: function(data) {
+                    $("#dataBody tbody *").remove();
+                    $.each(data, function() {
+                        $("#dataBody").append("<tr><td>" + this.name + "</td><td>" + this.rank + "</td></tr>");
+                    });
+                }
+
+            });
+        }
+
+    </script>
 </head>
 <body>
+    <div class="dept_area">
+        <table>
+            <thead>
+            <tr>
+                <th>부서명</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="dept : ${deptList}">
+                <td th:text="${dept.name}" th:onclick="javascript:fnSelect([[${dept.id}]], [[${dept.name}]]);"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="member_area">
+        <table id="dataBody">
+            <thead>
+                <tr>
+                    <th>성명</th>
+                    <th>직급</th>
+                </tr>
+            </thead>
+            <tbody>
 
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

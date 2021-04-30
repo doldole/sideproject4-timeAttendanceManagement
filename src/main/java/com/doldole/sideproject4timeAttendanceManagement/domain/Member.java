@@ -1,5 +1,6 @@
 package com.doldole.sideproject4timeAttendanceManagement.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,7 @@ public class Member extends BaseTimeEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "DEPT_ID")
+    @JsonIgnore
     private Dept dept;
 
     public Member(String name, String rank, Dept dept) {
