@@ -12,7 +12,6 @@
     </style>
     <script>
         function fnSelect(id, name) {
-            console.log('test');
             $.ajax({
                 url: "/cmmn/selectDeptEmpList",
                 type: "get",
@@ -21,11 +20,21 @@
                 success: function(data) {
                     $("#dataBody tbody *").remove();
                     $.each(data, function() {
-                        $("#dataBody").append("<tr><td>" + this.name + "</td><td>" + this.rank + "</td></tr>");
+                        var name = this.name;
+                        var id = this.id;
+                        var rank = this.rank;
+                        var tr = `<tr onclick='javascript:fnEmpDetail(${id}, "${name}");'><td>${name}</td><td>${rank}</td></tr>`;
+                        $("#dataBody").append(tr);
                     });
                 }
 
             });
+        }
+
+        function fnEmpDetail(id, name) {
+            var result = [id, name];
+            window.opener.fnEmpCallback(result);
+            window.close();
         }
 
     </script>

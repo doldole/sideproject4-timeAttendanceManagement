@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script>
+        function fnEmp() {
+            window.open('/cmmn/empPopupList', '직원팝업', 'width=720, height=500, menubar=no, status=no, toolbar=no');
+        }
+
+        function fnEmpCallback(result) {
+            document.getElementById('empId').value = result[0];
+            document.getElementById('empName').value = result[1];
+        }
+    </script>
 </head>
 <body>
-
+<form role="form" action="/workTime/new" th:object="${workTimeForm}" method="post">
+    <div>
+        <label th:for="workDate">근무일자</label>
+        <input type="text" th:field="*{workDate}">
+        <p th:if="${#fields.hasErrors('workDate')}" th:errors="*{workDate}">Incorrect date</p>
+    </div>
+    <div>
+        <label th:for="beginTime">근무시작시간</label>
+        <input type="text" th:field="*{beginTime}">
+        <p th:if="${#fields.hasErrors('beginTime')}" th:errors="*{beginTime}">Incorrect date</p>
+    </div>
+    <div>
+        <label th:for="endTime">근무종료시간</label>
+        <input type="text" th:field="*{endTime}">
+        <p th:if="${#fields.hasErrors('endTime')}" th:errors="*{endTime}">Incorrect date</p>
+    </div>
+    <div>
+        <label>직원</label>
+        <input type="text" th:field="*{empName}" readonly/>
+        <input type="hidden" th:field="*{empId}">
+        <a href="#" onclick="fnEmp();">직원선택</a>
+    </div>
+    <input type="submit" value="저장">
+</form>
 </body>
 </html>

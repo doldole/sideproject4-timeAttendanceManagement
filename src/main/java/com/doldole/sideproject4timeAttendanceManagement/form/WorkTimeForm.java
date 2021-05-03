@@ -1,5 +1,6 @@
 package com.doldole.sideproject4timeAttendanceManagement.form;
 
+import com.doldole.sideproject4timeAttendanceManagement.domain.Member;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,4 +18,7 @@ public class WorkTimeForm {
 
     @NotEmpty(message = "근무종료시간은 필수항목입니다.")
     private String endTime;
+
+    private Long empId;
+    private String empName;
 }
