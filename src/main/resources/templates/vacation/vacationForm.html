@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function fnEmp() {
+            window.open('/cmmn/empPopupList', '직원팝업', 'width=720, height=500, menubar=no, status=no, toolbar=no');
+        }
+
+        function fnEmpCallback(result) {
+            document.getElementById('empId').value = result[0];
+            document.getElementById('empName').value = result[1];
+        }
+    </script>
+</head>
+<body>
+<form role="form" action="/vacation/new" th:object="${vacationForm}" method="post">
+    <div>
+        <label th:for="beginDe">시작일</label>
+        <input type="text" th:field="*{beginDe}">
+        <p th:if="${#fields.hasErrors('beginDe')}" th:errors="*{beginDe}">Incorrect date</p>
+    </div>
+    <div>
+        <label th:for="beginTime">시작시간</label>
+        <input type="text" th:field="*{beginTime}">
+        <p th:if="${#fields.hasErrors('beginTime')}" th:errors="*{beginTime}">Incorrect date</p>
+    </div>
+    <div>
+        <label th:for="endDe">종료일</label>
+        <input type="text" th:field="*{endDe}">
+        <p th:if="${#fields.hasErrors('endDe')}" th:errors="*{endDe}">Incorrect date</p>
+    </div>
+    <div>
+        <label th:for="endTime">종료시간</label>
+        <input type="text" th:field="*{endTime}">
+        <p th:if="${#fields.hasErrors('endTime')}" th:errors="*{endTime}">Incorrect date</p>
+    </div>
+    <div>
+        <label th:for="vacationType">휴가종류</label>
+        <input type="text" th:field="*{vacationType}">
+        <p th:if="${#fields.hasErrors('vacationType')}" th:errors="*{vacationType}">Incorrect date</p>
+    </div>
+    <div>
+        <label>직원</label>
+        <input type="text" th:field="*{empName}" readonly/>
+        <input type="hidden" th:field="*{empId}">
+        <a href="#" onclick="fnEmp();">직원선택</a>
+    </div>
+    <input type="submit" value="저장">
+</form>
+</body>
+</html>

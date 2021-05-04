@@ -30,4 +30,14 @@ public class Vacation extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
+
+    public Vacation(AttendStatus vacationStatus, String vacationType, Period period, int useDe, int useTime, int useMnt, Member member) {
+        this.vacationStatus = vacationStatus;
+        this.vacationType = vacationType;
+        this.period = period;
+        this.useDe = useDe;
+        this.useTime = useTime;
+        this.useMnt = useMnt;
+        this.member = member;
+    }
 }
