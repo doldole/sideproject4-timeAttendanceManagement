@@ -26,12 +26,14 @@ public class BusinessTripService {
         ArrayList<BusinessTripCompanion> companions = new ArrayList<>();
 
         // 동반자 목록 생성
-        for (int i = 0; i < form.getCompanions().size(); i++) {
-            BusinessTripCompanion companion = BusinessTripCompanion.createCompanion(form.getCompanions().get(i).getId());
+        String[] companionsId = form.getComapnionsId().split(",");
+
+        for (int i = 0; i < companionsId.length; i++) {
+            BusinessTripCompanion companion = BusinessTripCompanion.createCompanion(Long.parseLong(companionsId[i]));
             companions.add(companion);
         }
 
-        Member findMember = memberService.findById(form.getMember().getId());
+        Member findMember = memberService.findById(form.getEmpId());
 
         Period period = new Period(form.getBeginDe(), form.getBeginTime(), form.getEndDe(), form.getEndTime());
         BusinessTrip businessTrip = BusinessTrip.createBusinessTrip(period, form.getUseDe(), form.getUseTime(), form.getUseMnt(), form.getDstnt(), form.getBsnsPrps(), form.getTransportation(), findMember, companions);

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function fnEmp() {
+            window.open('/cmmn/empPopupList', '직원팝업', 'width=720, height=500, menubar=no, status=no, toolbar=no');
+        }
+
+        function fnEmpCallback(result) {
+            document.getElementById('comapnionsId').value = result[0];
+            document.getElementById('comapnionsName').value = result[1];
+        }
+    </script>
+</head>
+<body>
+<form role="form" action="/businessTrip/new" th:object="${businessTripForm}" method="post">
+    <div>
+        <label th:for="beginDe">시작일</label>
+        <input type="text" th:field="*{beginDe}">
+        <p th:if="${#fields.hasErrors('beginDe')}" th:errors="*{beginDe}">Incorrect date</p>
+    </div>
+    <div>
+        <label th:for="beginTime">시작시간</label>
+        <input type="text" th:field="*{beginTime}">
+        <p th:if="${#fields.hasErrors('beginTime')}" th:errors="*{beginTime}">Incorrect date</p>
+    </div>
+    <div>
+        <label th:for="endDe">종료일</label>
+        <input type="text" th:field="*{endDe}">
+        <p th:if="${#fields.hasErrors('endDe')}" th:errors="*{endDe}">Incorrect date</p>
+    </div>
+    <div>
+        <label th:for="endTime">종료시간</label>
+        <input type="text" th:field="*{endTime}">
+        <p th:if="${#fields.hasErrors('endTime')}" th:errors="*{endTime}">Incorrect date</p>
+    </div>
+    <div>
+        <label th:for="dstnt">출장지</label>
+        <input type="text" th:field="*{dstnt}">
+        <p th:if="${#fields.hasErrors('dstnt')}" th:errors="*{dstnt}">Incorrect date</p>
+    </div>
+    <div>
+        <label th:for="bsnsPrps">출장목적</label>
+        <input type="text" th:field="*{bsnsPrps}">
+        <p th:if="${#fields.hasErrors('bsnsPrps')}" th:errors="*{bsnsPrps}">Incorrect date</p>
+    </div>
+    <div>
+        <label th:for="transportation">교통편</label>
+        <input type="text" th:field="*{transportation}">
+        <p th:if="${#fields.hasErrors('transportation')}" th:errors="*{transportation}">Incorrect date</p>
+    </div>
+    <div>
+        <label th:for="members">출장자</label>
+        <select name="empId" id="empId" class="form-control">
+            <option th:each="member : ${members}"
+                    th:value="${member.id}"
+                    th:text="${member.name}" />
+        </select>
+    </div>
+    <div>
+        <label>동반자</label>
+        <input type="text" th:field="*{comapnionsName}" readonly/>
+        <input type="hidden" th:field="*{comapnionsId}">
+        <a href="#" onclick="fnEmp();">직원선택</a>
+    </div>
+    <input type="submit" value="저장">
+</form>
+</body>
+</html>

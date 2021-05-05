@@ -13,17 +13,9 @@ public class OvertimeForm {
     private String beginTime;
     private String endDe;
     private String endTime;
-    private int ReqstTime;
-    private int ReqstMnt;
-    private Member member;
+    private int reqstTime;
+    private int reqstMnt;
 
-    public OvertimeForm(String beginDe, String beginTime, String endDe, String endTime, int reqstTime, int reqstMnt, Member member) {
-        this.beginDe = beginDe;
-        this.beginTime = beginTime;
-        this.endDe = endDe;
-        this.endTime = endTime;
-        ReqstTime = reqstTime;
-        ReqstMnt = reqstMnt;
-        this.member = member;
-    }
+    private Long empId;
+    private String empName;
 }

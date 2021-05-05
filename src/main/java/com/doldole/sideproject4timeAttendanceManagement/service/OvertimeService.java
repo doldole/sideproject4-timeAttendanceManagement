@@ -1,6 +1,7 @@
 package com.doldole.sideproject4timeAttendanceManagement.service;
 
 import com.doldole.sideproject4timeAttendanceManagement.domain.AttendStatus;
+import com.doldole.sideproject4timeAttendanceManagement.domain.Member;
 import com.doldole.sideproject4timeAttendanceManagement.domain.Overtime;
 import com.doldole.sideproject4timeAttendanceManagement.domain.Period;
 import com.doldole.sideproject4timeAttendanceManagement.form.OvertimeForm;
@@ -15,11 +16,14 @@ import org.springframework.transaction.annotation.Transactional;
 public class OvertimeService {
 
     private final OvertimeRepository overtimeRepository;
+    private final MemberService memberService;
 
     @Transactional
     public Long insertOvertime(OvertimeForm form) {
         Period period = new Period(form.getBeginDe(), form.getBeginTime(), form.getEndDe(), form.getEndTime());
-        Overtime overtime = new Overtime(AttendStatus.NORMAL, period, form.getReqstTime(), form.getReqstMnt(), form.getMember());
+
+        Member member = memberService.findById(form.getEmpId());
+        Overtime overtime = new Overtime(AttendStatus.NORMAL, period, form.getReqstTime(), form.getReqstMnt(), member);
 
         overtimeRepository.save(overtime);
         return overtime.getId();
