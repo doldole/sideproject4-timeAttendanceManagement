@@ -63,7 +63,6 @@ public class OvertimeService {
 
             Long calDate = endDate.getTime() - beginDate.getTime();
 
-            //Long calTime = calDate / (24 * 60 * 60 * 1000);
             calTime = calDate / (1000 * 60 * 60);
             calMnt = (calDate / (1000 * 60)) % 60;
 
