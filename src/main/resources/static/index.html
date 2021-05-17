@@ -3,20 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <title>근태관리시스템</title>
-
-    <style>
-        a {
-            text-decoration:none;
-            color:black;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="/css/common.css">
 </head>
 <body>
-    <a href="/dept/new">부서 등록</a>
-    <a href="/member/new">직원 등록</a>
-    <a href="/workTime/new">근무시간 등록</a>
-    <a href="/vacation/new">휴가</a>
-    <a href="/businessTrip/new">출장</a>
-    <a href="/overtime/new">초과근무</a>
+    <table class="table">
+        <thead>
+            <tr colspan="2">
+                <th>근태관리시스템</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th colspan="2">부서</th>
+            </tr>
+            <tr>
+                <td><a href="/dept/new">부서 등록</a></td>
+                <td><a href="/dept/deptList">부서 목록</a></td>
+            </tr>
+            <tr>
+                <th colspan="2">직원</th>
+            </tr>
+            <tr>
+                <td><a href="/member/new">직원 등록</a></td>
+                <td><a href="/member/memberList">직원 목록</a></td>
+            </tr>
+            <tr>
+                <th colspan="2">근무시간</th>
+            </tr>
+            <tr>
+                <td><a href="/workTime/new">근무시간 등록</a></td>
+                <td><a href="/workTime/workTimeList">근무시간 목록</a></td>
+            </tr>
+            <tr>
+                <th colspan="2">휴가</th>
+            </tr>
+            <tr>
+                <td><a href="/vacation/new">휴가 등록</a></td>
+                <td><a href="/vacation/vacationList">휴가 목록</a></td>
+            </tr>
+            <tr>
+                <th colspan="2">출장</th>
+            </tr>
+            <tr>
+                <td><a href="/businessTrip/new">출장 등록</a></td>
+                <td><a href="/businessTrip/businessTripList">출장 목록</a></td>
+            </tr>
+            <tr>
+                <th colspan="2">초과근무</th>
+            </tr>
+            <tr>
+                <td><a href="/overtime/new">초과근무 등록</a></td>
+                <td><a href="/overtime/overtimeList">초과근무 목록</a></td>
+            </tr>
+        </tbody>
+        <tr>
+
+        </tr>
+    </table>
 </body>
 </html>

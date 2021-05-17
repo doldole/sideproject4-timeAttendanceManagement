@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -36,5 +37,12 @@ public class DeptController {
         Long deptId = deptService.insertDept(dept);
 
         return "redirect:/";
+    }
+
+    @GetMapping("/dept/deptList")
+    public String deptList(Model model) {
+        List<Dept> result = deptService.findAll();
+        model.addAttribute("deptList", result);
+        return "/dept/deptList";
     }
 }
